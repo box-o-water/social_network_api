@@ -1,0 +1,25 @@
+{
+  "name": "social_network_api",
+  "version": "1.0.0",
+  "description": "![license](https://img.shields.io/static/v1?label=license&message=MIT&color=blue)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/box-o-water/social_network_api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/box-o-water/social_network_api/issues"
+  },
+  "homepage": "https://github.com/box-o-water/social_network_api#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.1"
+  }
+}

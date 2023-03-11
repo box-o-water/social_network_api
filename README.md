@@ -52,7 +52,7 @@ GIVEN a social network API
 - Use `nvm` to install `npm`
 - $ git clone git@github.com:box-o-water/social_network_api.git
 - $ npm install
-- TODO Install and set up the db stuffs
+- TODO Install and set up the MongoDB and Mongoose ODM stuffs
 
 ## Usage
 
