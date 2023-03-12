@@ -1,10 +1,15 @@
-const { User } = require("../models");
+const { User, Thought } = require("../models");
 
 module.exports = {
   // Get all users
   getUsers(req, res) {
     User.find()
-      .populate("friends")
+      // .populate("thoughts")
+      .populate({
+        path: "friends",
+        // remove the default versionKey from the query result
+        select: "-__v",
+      })
       // remove the default versionKey from the query result
       .select("-__v")
       .then(async (users) => {
@@ -29,7 +34,16 @@ module.exports = {
   // Get a user by id
   getUser(req, res) {
     User.findOne({ _id: req.params.id })
-      .populate("friends")
+      .populate({
+        path: "thoughts",
+        // remove the default versionKey from the query result
+        select: "-__v",
+      })
+      .populate({
+        path: "friends",
+        // remove the default versionKey from the query result
+        select: "-__v",
+      })
       // remove the default versionKey from the query result
       .select("-__v")
       .then(async (user) =>
