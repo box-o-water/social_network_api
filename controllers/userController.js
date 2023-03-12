@@ -4,13 +4,13 @@ module.exports = {
   // Get all users
   getUsers(req, res) {
     User.find()
+      .populate("friends")
       // remove the default versionKey from the query result
       .select("-__v")
       .then(async (users) => {
-        const userObj = {
+        res.json({
           users,
-        };
-        return res.json(userObj);
+        });
       })
       .catch((err) => {
         console.log(err);

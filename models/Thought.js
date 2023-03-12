@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
+const { Schema, model } = require("mongoose");
 const dayjs = require("dayjs");
 
 // Schema to create Reaction subdocument
-const ReactionSchema = new Schema(
+const reactionSchema = new Schema(
   {
     // using mongoose's ObjectId
     reactionId: {
@@ -66,7 +66,7 @@ const thoughtSchema = new Schema(
 );
 
 // Create a virtual property `reactionCount` that gets the amount of reactions per thought
-userSchema.virtual("reactionCount").get(function () {
+thoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
 });
 
