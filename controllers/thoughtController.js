@@ -56,4 +56,41 @@ module.exports = {
         return res.status(500).json(err);
       });
   },
+  // Update a thought by id
+  updateThought(req, res) {
+    Thought.findOneAndUpdate({ _id: req.params.id }, req.body, {
+      new: true,
+      runValidators: true,
+    })
+      // remove the default versionKey from the query result
+      .select("-__v")
+      .then(async (thought) =>
+        !thought
+          ? res.status(404).json({ message: "No thought with that ID" })
+          : res.json({
+              thought,
+            })
+      )
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json(err);
+      });
+  },
+  // Delete a thought by id
+  deleteThought(req, res) {
+    Thought.findOneAndRemove({ _id: req.params.id })
+      // remove the default versionKey from the query result
+      .select("-__v")
+      .then(async (thought) =>
+        !thought
+          ? res.status(404).json({ message: "No thought with that ID" })
+          : res.json({
+              thought,
+            })
+      )
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json(err);
+      });
+  },
 };
