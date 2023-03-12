@@ -13,11 +13,7 @@ const userSchema = new Schema(
       type: String,
       unique: true,
       required: true,
-      match: [
-        // https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s01.html
-        /^[A-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Z0-9.-]+$/,
-        "Please enter a valid email address",
-      ],
+      match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/],
     },
     // thoughts: [
     //   {
@@ -41,9 +37,9 @@ const userSchema = new Schema(
 );
 
 // Create a virtual property `friendCount` that gets the amount of friends per user
-userSchema.virtual("friendCount").get(function () {
-  return this.friends.length;
-});
+// userSchema.virtual("friendCount").get(function () {
+//   return this.friends.length;
+// });
 
 // Initialize the User model
 const User = model("user", userSchema);
