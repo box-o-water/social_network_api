@@ -4,9 +4,10 @@
 
 ## Description
 
-A command-line application to manage an employee database, using Node.js, Inquirer, and MySQL.
+An API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list.
 
-![TODO](/assets/images/social_network_api_preview.png)
+<img src="/assets/images/social_network_api_preview1.png" width="700"/>
+<img src="/assets/images/social_network_api_preview2.png" width="700"/>
 
 Click [here TODO]() to watch a screencastify video demonstrating the application.
 
@@ -34,16 +35,16 @@ SO THAT my website can handle large amounts of unstructured data
 
 GIVEN a social network API
 
-- [ ] WHEN I enter the command to invoke the application
+- [x] WHEN I enter the command to invoke the application
       THEN my server is started and the Mongoose models are synced to the MongoDB database
 
-- [ ] WHEN I open API GET routes in Insomnia for users and thoughts
+- [x] WHEN I open API GET routes in Insomnia for users and thoughts
       THEN the data for each of these routes is displayed in a formatted JSON
 
-- [ ] WHEN I test API POST, PUT, and DELETE routes in Insomnia
+- [x] WHEN I test API POST, PUT, and DELETE routes in Insomnia
       THEN I am able to successfully create, update, and delete users and thoughts in my database
 
-- [ ] WHEN I test API POST and DELETE routes in Insomnia
+- [x] WHEN I test API POST and DELETE routes in Insomnia
       THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
 
 ## Installation
@@ -52,11 +53,14 @@ GIVEN a social network API
 - Use `nvm` to install `npm`
 - $ git clone git@github.com:box-o-water/social_network_api.git
 - $ npm install
-- TODO Install and set up the MongoDB and Mongoose ODM stuffs
+- Install and start `MongoDb`
+- Install `MongoDB Compass` UI (optional)
 
 ## Usage
 
-- TODO how to use the thing
+- $ npm start
+- Use `insomnia` or another API Client to set up the routes and applicable JSON bodies in [userRoutes](./routes/api/userRoutes.js) and [thoughtRoutes](./routes/api/thoughtRoutes.js) to interact with the Mongo database.
+- Note: append routes with `http://localhost:3001`
 
 ## Contributing
 
