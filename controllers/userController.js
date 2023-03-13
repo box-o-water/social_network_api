@@ -23,6 +23,10 @@ module.exports = {
       });
   },
   // Create a user
+  // {
+  //   "username": "sue",
+  //   "email": "sue@sue.com"
+  // }
   createUser(req, res) {
     User.create(req.body)
       // remove the default versionKey from the query result
@@ -101,7 +105,7 @@ module.exports = {
   // Add a friend to a user by id
   addFriend(req, res) {
     User.findOneAndUpdate(
-      { _id: req.params.id },
+      { _id: req.params.userId },
       { $addToSet: { friends: req.params.friendId } },
       { runValidators: true, new: true }
     )
@@ -120,7 +124,7 @@ module.exports = {
   // Delete a friend from a user by id
   deleteFriend(req, res) {
     User.findOneAndUpdate(
-      { _id: req.params.id },
+      { _id: req.params.userId },
       { $pull: { friends: req.params.friendId } },
       { runValidators: true, new: true }
     )

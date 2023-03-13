@@ -17,6 +17,11 @@ module.exports = {
       });
   },
   // Create a thought
+  // {
+  //   "thoughtText": "Here's a cool thought...",
+  //   "username": "sue",
+  //   "userId": "640d1cd1f45924e6aeb10bf7"
+  // }
   createThought(req, res) {
     Thought.create(req.body)
       // remove the default versionKey from the query result
@@ -87,6 +92,47 @@ module.exports = {
           : res.json({
               thought,
             })
+      )
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json(err);
+      });
+  },
+
+  // Add reaction to a thought by id
+  // {
+  //   "reactionBody": "sweet!",
+  //   "username": "bob"
+  // }
+  addReaction(req, res) {
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId },
+      { $addToSet: { reactions: req.body } },
+      { runValidators: true, new: true }
+    )
+      .then((thought) =>
+        !thought
+          ? res.status(404).json({ message: "No thought with that ID" })
+          : res.json({
+              thought,
+            })
+      )
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json(err);
+      });
+  },
+  // Delete a reaction from a thought by id
+  deleteReaction(req, res) {
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId },
+      { $pull: { reactions: { reactionId: req.params.reactionId } } },
+      { runValidators: true, new: true }
+    )
+      .then((thought) =>
+        !thought
+          ? res.status(404).json({ message: "No thought with that ID" })
+          : res.json(thought)
       )
       .catch((err) => {
         console.log(err);
