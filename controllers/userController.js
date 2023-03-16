@@ -30,7 +30,7 @@ module.exports = {
   createUser(req, res) {
     User.create(req.body)
       // remove the default versionKey from the query result
-      .select("-__v")
+      // .select("-__v")
       .then((user) => res.json(user))
       .catch((err) => res.status(500).json(err));
   },

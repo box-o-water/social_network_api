@@ -1,5 +1,5 @@
 const { Schema, model, Types } = require("mongoose");
-const dayjs = require("dayjs");
+const moment = require("moment");
 
 // Schema to create Reaction subdocument
 const reactionSchema = new Schema(
@@ -25,7 +25,7 @@ const reactionSchema = new Schema(
       default: Date.now,
       // format: Jan 01, 2023 12:34 pm
       get: (createdAtData) =>
-        dayjs(createdAtData).format("MMM DD, YYYY hh:mm a"),
+        moment(createdAtData).format("MMM DD, YYYY [at] hh:mm a"),
     },
   },
   {
@@ -49,7 +49,7 @@ const thoughtSchema = new Schema(
       default: Date.now,
       // format: Jan 01, 2023 12:34 pm
       get: (createdAtData) =>
-        dayjs(createdAtData).format("MMM DD, YYYY hh:mm a"),
+        moment(createdAtData).format("MMM DD, YYYY [at] hh:mm a"),
     },
     username: {
       type: String,
@@ -60,6 +60,7 @@ const thoughtSchema = new Schema(
   {
     toJSON: {
       virtuals: true,
+      getters: true,
     },
     id: false,
   }
