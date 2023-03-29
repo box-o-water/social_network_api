@@ -9,7 +9,7 @@ An API for a social network web application where users can share their thoughts
 <img src="/assets/images/social_network_api_preview1.png" width="700"/>
 <img src="/assets/images/social_network_api_preview2.png" width="700"/>
 
-Click [here TODO]() to watch a screencastify video demonstrating the application.
+Click [here](https://watch.screencastify.com/v/J7xgpAiPYfnXZ2QJvvtX) to watch a screencastify video demonstrating the application.
 
 ## Table of Contents
 
