@@ -17,6 +17,7 @@ module.exports = {
       });
   },
   // Create a thought
+  // username seems redundant but required in the Thought model
   // {
   //   "thoughtText": "Here's a cool thought...",
   //   "username": "sue",
@@ -24,12 +25,11 @@ module.exports = {
   // }
   createThought(req, res) {
     Thought.create(req.body)
-      // remove the default versionKey from the query result
-      // .select("-__v")
       .then(({ _id }) => {
         return User.findOneAndUpdate(
-          { _id: req.body.userId },
-          { $push: { thoughts: _id } },
+          { _id: req.body.user_id },
+          // { $push: { thoughts: _id } }, // alternative to addToSet, for posterity's sake
+          { $addToSet: { thoughts: _id } },
           { new: true }
         );
       })

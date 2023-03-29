@@ -6,6 +6,11 @@ module.exports = {
     User.find()
       // .populate("thoughts")
       .populate({
+        path: "thoughts",
+        // remove the default versionKey from the query result
+        select: "-__v",
+      })
+      .populate({
         path: "friends",
         // remove the default versionKey from the query result
         select: "-__v",
