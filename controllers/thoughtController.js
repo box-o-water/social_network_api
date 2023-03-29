@@ -21,7 +21,7 @@ module.exports = {
   // {
   //   "thoughtText": "Here's a cool thought...",
   //   "username": "sue",
-  //   "userId": "640d1cd1f45924e6aeb10bf7"
+  //   "user_id": "640d1cd1f45924e6aeb10bf7"
   // }
   createThought(req, res) {
     Thought.create(req.body)

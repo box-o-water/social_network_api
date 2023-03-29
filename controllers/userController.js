@@ -90,8 +90,7 @@ module.exports = {
   },
   // Delete a user by id
   deleteUser(req, res) {
-    User.findOneAndRemove({ _id: req.params.id })
-      .populate("friends")
+    User.findOneAndDelete({ _id: req.params.id })
       // remove the default versionKey from the query result
       .select("-__v")
       .then(async (user) =>
